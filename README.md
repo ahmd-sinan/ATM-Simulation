@@ -1,4 +1,4 @@
-# ATM Simulation in C
+# ATM Simulation
 
 ![Language](https://img.shields.io/badge/Language-C-00599C?logo=c&logoColor=white) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Project Type](https://img.shields.io/badge/Project-ATM%20Simulation-blue) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
