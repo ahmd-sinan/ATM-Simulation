@@ -89,7 +89,7 @@ int main() {
     Account users[3] = {
                     {"John Doe", 1234, 1000.00},
                     {"Jane Smith", 5678, 2000.00},
-                    {"Abu", 2468, 1500.00}
+                    {"Ahamed Sinan", 2468, 1500.00}
     };
     int pin;
     int attempts = 0;
