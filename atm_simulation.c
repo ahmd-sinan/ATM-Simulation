@@ -5,52 +5,97 @@
 #define BOLD "\033[1m"
 #define RESET "\033[0m"
 
+typedef struct {
+    char name[50];
+    int pin;
+    float balance;
+    float transactions[1000];
+    int transactionCount;
+} Account;
 
-float balance = 1000.0;
-
-void checkBalance() {
-    printf(BOLD "Balance: $%.2f\n" RESET, balance);
-    if (balance <= 0) {
+void checkBalance(Account *user) {
+    printf(BOLD "Balance: $%.2f\n" RESET, user->balance);
+    printf(BOLD YELLOW"--------------------------------\n" RESET);
+    if (user->balance <= 0) {
         printf(BOLD RED "NOT ENOUGH BALANCE!\n" RESET);
+        printf(BOLD YELLOW"--------------------------------\n" RESET);
         return;
     }
 }
-void deposit() {
+void deposit(Account *user) {
     float deposit;
     printf(BOLD "Enter deposit amount: " RESET);
     scanf("%f", &deposit);
     if (deposit <= 0) {
         printf(BOLD RED "INVALID AMOUNT!\nEnter a Valid Amount\n" RESET);
+        printf(BOLD YELLOW"--------------------------------\n" RESET);
         return;
     }
-    balance = balance + deposit;
+    user->balance = user->balance + deposit;
     printf(BOLD GREEN "You deposited $%.2f\n" RESET, deposit);
-    printf("Updated Balance: $%.2f\n", balance);
+    printf("Updated Balance: $%.2f\n", user->balance);
+    printf(BOLD YELLOW"--------------------------------\n" RESET);
+
+    user->transactions[user->transactionCount] = deposit;
+    user->transactionCount++;
+
 
 }
-void withdraw() {
+void withdraw(Account *user) {
     float withdraw;
     printf(BOLD "Enter withdraw amount: " RESET);
     scanf("%f", &withdraw);
     if (withdraw <= 0) {
         printf(BOLD RED "INVALID AMOUNT!\nPlease Enter a Valid Amount\n" RESET);
+        printf(BOLD YELLOW"--------------------------------\n" RESET);
         return;
     }
-    if (withdraw > balance) {
+    if (withdraw > user->balance) {
         printf(BOLD RED "NOT ENOUGH BALANCE!\n" RESET);
+        printf(BOLD YELLOW"--------------------------------\n" RESET);
         return;
     }
-    balance = balance - withdraw;
+    user->balance = user->balance - withdraw;
     printf(BOLD GREEN "You withdrew $%.2f\n" RESET, withdraw);
-    printf("Updated Balance: $%.2f\n", balance);
+    printf("Updated Balance: $%.2f\n", user->balance);
+    printf(BOLD YELLOW"--------------------------------\n" RESET);
+
+    user->transactions[user->transactionCount] = -withdraw;
+    user->transactionCount++;
+}
+
+void transactions(Account *user) {
+    if (user->transactionCount == 0) {
+        printf(BOLD RED "No Transactions Yet!\n" RESET);
+        printf(BOLD YELLOW"--------------------------------\n" RESET);
+        return; 
+    }
+    printf(BOLD YELLOW "--------------------------------\n" RESET);
+    printf(BOLD YELLOW "      TRANSACTION HISTORY\n\n" RESET);
+    for (int i = 0; i < user->transactionCount; i++) {
+        if (user->transactions[i] > 0) {
+            printf(BOLD GREEN "%d. Deposit: $%.2f\n" RESET, i+1,  user->transactions[i]);
+        }
+        else {
+            printf(BOLD RED "%d. Withdraw: $%.2f\n" RESET, i+1, -user->transactions[i]);
+        }
+    }
+    printf(BOLD YELLOW "\n--------------------------------\n" RESET);
+    printf(BOLD YELLOW "Current Balance: $%.2f\n" RESET, user->balance);
+    printf(BOLD YELLOW "--------------------------------\n" RESET);
 }
 
 int main() {
+    Account users[3] = {
+                    {"John Doe", 1234, 1000.00},
+                    {"Jane Smith", 5678, 2000.00},
+                    {"Abu", 2468, 1500.00}
+    };
     int pin;
-    int storedPin[] = {1234, 5678, 2468};
-    int users = 3;
     int attempts = 0;
+    int currentUser = -1;
     int valid;
+
 
     printf(BOLD YELLOW"      WELCOME TO THE ATM\n" RESET);
     printf(BOLD YELLOW"--------------------------------\n\n" RESET);
@@ -59,15 +104,17 @@ int main() {
         printf("\nEnter your PIN: ");
         scanf("%d", &pin);
 
-        for (int i = 0; i < users; i++) {
-            if (pin == storedPin[i]) {
+        for (int i = 0; i < 3; i++) {
+            if (pin == users[i].pin) {
                 valid = 1;
+                currentUser = i;
+                printf(BOLD GREEN "LOGIN SUCCESSFUL!\n" RESET);
+                printf(BOLD YELLOW "Welcome, %s!\n" RESET, users[i].name);
                 break;
             }
         }
 
         if (valid == 1) {
-            printf(BOLD GREEN "LOGIN SUCCESSFUL!\n" RESET);
             break;
         }
         else {
@@ -86,18 +133,21 @@ int main() {
         printf(BOLD YELLOW "1. Check Balance\n" RESET);
         printf(BOLD YELLOW "2. Deposit\n" RESET);
         printf(BOLD YELLOW "3. Withdraw\n" RESET);
-        printf(BOLD RED"4. Exit\n" RESET);
+        printf(BOLD YELLOW "4. View Transactions\n" RESET);
+        printf(BOLD RED"5. Exit\n" RESET);
         printf(BOLD"\nPlease Select Your Choice: " RESET);
         scanf("%d", &choice);
 
-        if (choice < 1 || choice > 4) {
+        if (choice < 1 || choice > 5) {
             printf(BOLD RED "Invalid Entry!\n" RESET);
+            printf(BOLD YELLOW"--------------------------------\n" RESET);
             continue;
         }
-        if (choice == 1) checkBalance();
-        if (choice == 2) deposit();
-        if (choice == 3) withdraw();
-        if (choice == 4) {
+        if (choice == 1) checkBalance(&users[currentUser]);
+        if (choice == 2) deposit(&users[currentUser]);
+        if (choice == 3) withdraw(&users[currentUser]);
+        if (choice == 4) transactions(&users[currentUser]);
+        if (choice == 5) {
             printf(BOLD GREEN "Thank You For Using Our ATM, Goodbye!\n" RESET);
             break;
         }
