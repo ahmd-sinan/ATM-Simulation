@@ -7,6 +7,9 @@
 A console-based ATM Simulation System built using C programming language.
 This project demonstrates structured programming concepts including `struct` usage, Pointer-based function design, Authentication logic, Transaction tracking system, Menu-driven interface and ANSI color formatting in terminal.
 
+## Demo
+![ATM Live Demo](assets/atm_demo.gif)
+
 ## Features
 * ✔ Multi-user login system (PIN authentication)
 * ✔ 3 login attempts limit
@@ -61,9 +64,6 @@ Means:
 - Users must enter correct PIN
 - Maximum 3 failed attempts allowed
 - Program exits after 3 incorrect attempts
-
-## Demo
-![ATM Live Demo](assets/atm_demo.gif)
 
 ## How to Compile & Run
 Using GCC:
