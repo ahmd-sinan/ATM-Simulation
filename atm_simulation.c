@@ -98,7 +98,7 @@ int main() {
 
 
     printf(BOLD YELLOW"      WELCOME TO THE ATM\n" RESET);
-    printf(BOLD YELLOW"--------------------------------\n\n" RESET);
+    printf(BOLD YELLOW"--------------------------------\n" RESET);
     while (attempts < 3) {
         valid = 0;
         printf("\nEnter your PIN: ");
