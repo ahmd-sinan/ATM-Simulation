@@ -1,5 +1,11 @@
 # ATM Simulation in C
 
+![Language](https://img.shields.io/badge/Language-C-00599C?logo=c&logoColor=white)
+![Project Type](https://img.shields.io/badge/Project-ATM%20Simulation-blue)
+![Level](https://img.shields.io/badge/Level-Intermediate-orange)
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Status](https://img.shields.io/badge/Status-Active-success)
+
 A console-based ATM Simulation built using C programming language.
 
 This project demonstrates structured programming concepts including:
@@ -11,14 +17,14 @@ This project demonstrates structured programming concepts including:
 - ANSI color formatting in terminal
 
 ## Features
-✔ Multi-user login system (PIN authentication)
-✔ 3 login attempts limit
-✔ Check account balance
-✔ Deposit money
-✔ Withdraw money
-✔ Transaction history tracking
-✔ Individual balance per user
-✔ Clean terminal UI with color formatting
+* ✔ Multi-user login system (PIN authentication)
+* ✔ 3 login attempts limit
+* ✔ Check account balance
+* ✔ Deposit money
+* ✔ Withdraw money
+* ✔ Transaction history tracking
+* ✔ Individual balance per user
+* ✔ Clean terminal UI with color formatting
 
 ## Concepts Used
 - Structures (`typedef struct`)
