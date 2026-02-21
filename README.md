@@ -5,13 +5,7 @@
 ![Level](https://img.shields.io/badge/Level-Intermediate-orange)
 
 A console-based ATM Simulation System built using C programming language.
-This project demonstrates structured programming concepts including:
-- `struct` usage
-- Pointer-based function design
-- Authentication logic
-- Transaction tracking system
-- Menu-driven interface
-- ANSI color formatting in terminal
+This project demonstrates structured programming concepts including `struct` usage, Pointer-based function design, Authentication logic, Transaction tracking system, Menu-driven interface and ANSI color formatting in terminal.
 
 ## Features
 * ✔ Multi-user login system (PIN authentication)
@@ -43,6 +37,14 @@ typedef struct {
     int transactionCount;
 } Account;
 ```
+
+## Menu Options
+- Check Balance
+- Deposit
+- Withdraw
+- View Transactions
+- Exit
+
 ## Transaction Logic
 - Deposits are stored as positive values
 - Withdrawals are stored as negative values
@@ -55,17 +57,13 @@ Means:
 - Withdrew $200
 - Deposited $100
 
-## Menu Options
-- Check Balance
-- Deposit
-- Withdraw
-- View Transactions
-- Exit
-
 ## 🔐 Authentication System
 - Users must enter correct PIN
 - Maximum 3 failed attempts allowed
 - Program exits after 3 incorrect attempts
+
+## Demo
+
 
 ## How to Compile & Run
 Using GCC:
