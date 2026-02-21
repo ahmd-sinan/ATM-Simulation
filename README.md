@@ -1,11 +1,8 @@
 # ATM Simulation in C
 
-![Language](https://img.shields.io/badge/Language-C-00599C?logo=c&logoColor=white)
-![Project Type](https://img.shields.io/badge/Project-ATM%20Simulation-blue)
+![Language](https://img.shields.io/badge/Language-C-00599C?logo=c&logoColor=white) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Project Type](https://img.shields.io/badge/Project-ATM%20Simulation-blue) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Level](https://img.shields.io/badge/Level-Intermediate-orange)
-![Build](https://img.shields.io/badge/Build-Passing-brightgreen)
-![Status](https://img.shields.io/badge/Status-Active-success)
-
 A console-based ATM Simulation built using C programming language.
 
 This project demonstrates structured programming concepts including:
