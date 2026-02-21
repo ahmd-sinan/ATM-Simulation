@@ -63,7 +63,7 @@ Means:
 - Program exits after 3 incorrect attempts
 
 ## Demo
-
+![ATM Live Demo](assets/atm_demo.gif)
 
 ## How to Compile & Run
 Using GCC:
