@@ -55,8 +55,33 @@ void withdraw(Account *user) {
         printf(BOLD YELLOW"--------------------------------\n" RESET);
         return;
     }
+
     user->balance = user->balance - withdraw;
     printf(BOLD GREEN "You withdrew $%.2f\n" RESET, withdraw);
+
+    // The Greedy Cashier Logic (Convert float to int for bill math)
+    int amount = (int)withdraw; 
+    printf(BOLD "\n[ Dispensing Cash... ]\n" RESET);
+    
+    int notes500 = amount / 500;
+    amount = amount % 500;      // Update remaining amount
+    
+    int notes100 = amount / 100;
+    amount = amount % 100;
+    
+    int notes50 = amount / 50;
+    amount = amount % 50;
+    
+    int notes10 = amount / 10;
+    amount = amount % 10;
+
+    // Print the dispensed notes (Only print if we actually give that note)
+    if (notes500 > 0) printf(" $500 x %d\n", notes500);
+    if (notes100 > 0) printf(" $100 x %d\n", notes100);
+    if (notes50 > 0)  printf(" $50 x %d\n", notes50);
+    if (notes10 > 0)  printf(" $10 x %d\n", notes10);
+    if (amount > 0)   printf(" Coins x %d\n", amount); // For $1 or $5 remainders!
+
     printf("Updated Balance: $%.2f\n", user->balance);
     printf(BOLD YELLOW"--------------------------------\n" RESET);
 
